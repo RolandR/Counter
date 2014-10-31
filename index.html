@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>
+			0 - Counter
+		</title>
+		<style>
+			body{
+				font-family: sans-serif;
+				text-align: center;
+			}
+			h1{
+				font-size: 5em;
+				line-height: 1em;
+				font-weight: normal;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="counter" onclick="increment();">0</h1>
+		<p>Press enter (or click the number) to increment, press delete to decrement.</p>
+	</body>
+	<script type="text/javascript">
+		
+		var counter = 0;
+		
+		function increment(){
+			counter++;
+			document.getElementById("counter").innerHTML = counter;
+			document.title = counter + " - Counter";
+		}
+		
+		function decrement(){
+			counter--;
+			document.getElementById("counter").innerHTML = counter;
+			document.title = counter + " - Counter";
+		}
+
+		document.onkeypress = function(event) {
+			var key = event.keyCode || event.which;
+			if(key == 13){
+				increment();
+			} else if(key == 127){
+				event.preventDefault();
+				decrement();
+			}
+		}
+
+		
+	</script>
+</html>
+
