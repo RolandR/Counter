@@ -16,25 +16,33 @@
 				font-weight: normal;
 				cursor: pointer;
 			}
+			p{
+				font-size: 21px;
+				line-height: 25px;
+				margin: 0px;
+			}
 		</style>
 	</head>
 	<body>
-		<h1 id="counter" onclick="increment();">0</h1>
-		<p>Press enter (or click the number) to increment, press delete to decrement.</p>
+		<h1 id="counter">0</h1>
+		<p>Press enter or click anywhere to increment.</p>
+		<p>Press delete or ctrl+click to decrement.</p>
 	</body>
 	<script type="text/javascript">
 		
 		var counter = 0;
+
+		var counterElement = document.getElementById("counter");
 		
 		function increment(){
 			counter++;
-			document.getElementById("counter").innerHTML = counter;
+			counterElement.innerHTML = counter;
 			document.title = counter + " - Counter";
 		}
 		
 		function decrement(){
 			counter--;
-			document.getElementById("counter").innerHTML = counter;
+			counterElement.innerHTML = counter;
 			document.title = counter + " - Counter";
 		}
 
@@ -45,6 +53,19 @@
 			} else if(key == 127){
 				event.preventDefault();
 				decrement();
+			}
+		}
+
+		document.onmousedown = function(e){
+			e.preventDefault();
+			return false;
+		}
+
+		document.onclick = function(e){
+			if(e.ctrlKey){
+				decrement();
+			} else {
+				increment();
 			}
 		}
 
